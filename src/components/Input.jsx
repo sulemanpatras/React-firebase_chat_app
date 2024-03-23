@@ -73,6 +73,14 @@ const Input = () => {
     setText("");
     setImg(null);
   };
+
+  const enterPressed = (event) =>{
+    const code = event.keyCode || event.which;
+    if(code === 13){
+      handleSend();
+    }
+  }
+
   return (
     <div className="input">
       <input
@@ -80,9 +88,10 @@ const Input = () => {
         placeholder="Type something..."
         onChange={(e) => setText(e.target.value)}
         value={text}
+        onKeyDown={enterPressed.bind(this)}
       />
       <div className="send">
-        <img src={Attach} alt="" />
+        {/* <img src={Attach} alt="" /> */}
         <input
           type="file"
           style={{ display: "none" }}
